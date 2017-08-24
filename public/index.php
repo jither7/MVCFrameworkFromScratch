@@ -1,12 +1,19 @@
 <?php
 
 // Require the controller class
-require '../App/Controllers/Posts.php';
+//require '../App/Controllers/Posts.php';
 
+spl_autoload_register(function($class) {
+    $root = dirname(__DIR__); // get the parent directory
+    $file = $root . '/' . str_replace('\\', '/', $class) . '.php';
+    if(is_readable($file)) {
+        require $root . '/' . str_replace('\\', '/', $class) . '.php';
+    }
+});
 // Routing
-require '../Core/Router.php';
+//require '../Core/Router.php';
 
-$router = new Router();
+$router = new Core\Router();
 
 //echo get_class($router);
 
@@ -16,8 +23,9 @@ $router->add('posts', ['controller' => 'Posts', 'action' => 'index']);
 $router->add('posts/new', ['controller' => 'Posts', 'action' => 'new']);
 
 $router->add('{controller}/{action}');
-$router->add('admin/{action}/{controller}');
+//$router->add('admin/{action}/{controller}');
 $router->add('{controller}/{id:\d+}/{action}');
+$router->add('admin/{controller}/{action}', ['namespace' => 'Admin']);
 
 // Display the routing table
 //echo '<pre>';
