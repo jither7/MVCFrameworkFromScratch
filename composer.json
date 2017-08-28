@@ -1,0 +1,12 @@
+{
+    "name": "anh.phamthe/mvc-framework-from-scratch",
+    "authors": [
+        {
+            "name": "anh.phamthe",
+            "email": "phamtheanh0702@gmail.com"
+        }
+    ],
+    "require": {
+        "twig/twig": "~2.0"
+    }
+}

@@ -3,25 +3,24 @@
 namespace App\Controllers;
 
 use Core\Controller;
+use Core\View;
 
 class Home extends Controller
 {
-
-    public function before()
-    {
-        echo "(before) ";
-    }
-
-    public function after()
-    {
-        echo "(after) ";
-    }
 
     /**
      * @return void
      */
     public function indexAction()
     {
-        echo "Hello from the index action in the Home controller";
+//        View::render('Home.index', [
+//            'name' => 'Dave',
+//            'colors' => ['red', 'blue', 'green']
+//        ]);
+
+        View::renderTemplate('Home/index.html', [
+            'name' => 'Dave',
+            'colors' => ['red', 'blue', 'green']
+        ]);
     }
 }
